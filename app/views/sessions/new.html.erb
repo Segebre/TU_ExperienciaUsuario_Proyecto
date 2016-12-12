@@ -1,0 +1,23 @@
+<h1>Login:</h1>
+<h2>Please fill the form below: </h2>
+
+<% if flash[:error] %>
+  <div>
+    <%= flash[:error] %>
+  </div>
+<% end %>
+
+<%= form_for :session, url: login_path do |f| %>
+  <div>
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+  </div>
+  <div>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <div>
+    <%= f.submit "Save" %>
+    <%= link_to "Cancel", root_path %>
+  </div>
+<% end %>

@@ -1,23 +1,24 @@
 Rails.application.routes.draw do
-  get 'donations/new'
+  resources :sessions
 
-  get 'comments/new'
+  resources :donations
 
-  get 'campaigns/new'
+  resources :comments
 
-  get 'campaigns/index'
+  resources :campaigns
 
-  get 'campaigns/show'
-
-  get 'campaigns/edit'
-
-  get 'users/new'
-
-  get 'users/show'
-
-  get 'users/edit'
+  resources :users, :except => [:new]
 
   root 'welcome#index'
+
+  # Users
+  get '/join', to: 'users#new', as: :new_user
+  #post '/join/:id', to: 'users#create'
+
+  # Sessions
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
