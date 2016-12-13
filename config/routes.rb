@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   # Users
   get '/join', to: 'users#new', as: :new_user
-  #post '/join/:id', to: 'users#create'
+  #post '/join', to: 'users#create'
 
   # Sessions
   get '/login', to: 'sessions#new'
