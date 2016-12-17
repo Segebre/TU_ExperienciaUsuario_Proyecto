@@ -1,2 +1,23 @@
-<h1>Campaigns#index</h1>
-<p>Find me in app/views/campaigns/index.html.erb</p>
+<% if flash[:notice] %>
+  <p style="background: yellow">
+    <%= flash[:notice] %>
+  </p>
+<% end %>
+
+<h1>Campaigns</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Review</th>
+      <th>Goal</th>
+      <th>Amount donated</th>
+      <th>Started at</th>
+      <th>Started by</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @campaigns %>
+
+  </tbody>
+</table>

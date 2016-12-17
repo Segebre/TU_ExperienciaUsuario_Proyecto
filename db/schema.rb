@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161212214131) do
+ActiveRecord::Schema.define(version: 20161217140423) do
 
   create_table "campaigns", force: :cascade do |t|
     t.text     "title"
     t.text     "description"
     t.text     "review"
     t.decimal  "goal"
-    t.text     "campaign"
+    t.text     "category"
     t.text     "imageurl"
     t.integer  "user_id"
     t.integer  "likes"

@@ -4,9 +4,6 @@ Rails.application.routes.draw do
   resources :donations
 
   resources :comments
-
-  resources :campaigns
-
   
 
   root 'welcome#index'
@@ -19,8 +16,10 @@ Rails.application.routes.draw do
   patch  '/profile', to: 'users#update'
   put    '/profile', to: 'users#update'
   #delete '/users/:id', to: 'users#destroy'
-  resources :users, :except => [:index]
-  
+  resources :users, :except => [:index, :destroy]
+
+  # Campaigns
+  resources :campaigns
 
   # Sessions
   get '/login', to: 'sessions#new'
@@ -29,3 +28,13 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
+
+# Defaults
+  #get    '/defaults', to: 'defaults#index', as: :defaults
+  #post   '/defaults', to: 'defaults#create'
+  #get    '/defaults/new', to: 'defaults#new', as: :new_default
+  #get    '/defaults/:id/edit', to: 'defaults#edit', as: :edit_default
+  #get    '/defaults/:id', to: 'defaults#show', as: :default
+  #patch  '/defaults/:id', to: 'defaults#update'
+  #put    '/defaults/:id', to: 'defaults#update'
+  #delete '/defaults/:id', to: 'defaults#destroy'
