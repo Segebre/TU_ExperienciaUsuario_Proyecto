@@ -7,13 +7,20 @@ Rails.application.routes.draw do
 
   resources :campaigns
 
-  resources :users, :except => [:new]
+  
 
   root 'welcome#index'
 
   # Users
-  get '/join', to: 'users#new', as: :new_user
-  #post '/join', to: 'users#create'
+  get    '/join', to: 'users#new', as: :new_user
+  post   '/join', to: 'users#create'
+  get    '/profile/edit', to: 'users#edit', as: :edit_user
+  get    '/profile', to: 'users#show', as: :user
+  patch  '/profile', to: 'users#update'
+  put    '/profile', to: 'users#update'
+  #delete '/users/:id', to: 'users#destroy'
+  resources :users, :except => [:index]
+  
 
   # Sessions
   get '/login', to: 'sessions#new'
