@@ -15,12 +15,11 @@ Rails.application.routes.draw do
   get    '/profile', to: 'users#show', as: :user
   patch  '/profile', to: 'users#update'
   put    '/profile', to: 'users#update'
-  #delete '/users/:id', to: 'users#destroy'
   resources :users, :except => [:index, :destroy]
 
   # Campaigns
   resources :campaigns
-
+  
   # Sessions
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

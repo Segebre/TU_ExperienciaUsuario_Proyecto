@@ -23,6 +23,18 @@ class CampaignsController < ApplicationController
   end
 
   def edit
+    @campaign = Campaign.find(params[:id])
+  end
+
+  def update
+    @campaign = Campaign.find(params[:id])
+
+    if @campaign.update_attributes(campaign_params)
+      redirect_to @campaign, notice: "Updated Successfully!"
+    else
+      flash[:errors] = "Could not update campaign"
+      render :new
+    end
   end
 
   protected

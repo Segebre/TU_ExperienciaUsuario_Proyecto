@@ -1,0 +1,44 @@
+<h2>Please fill the form below: </h2>
+<%= render partial: "shared/errors", locals: {obj: campaign} %>
+<%= form_for(campaign) do |f| %>
+  <p>
+    <%= f.label :title, "Title:" %>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :description, "Description: " %>
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :review, "Review: " %>
+    <%= f.text_area :review %>
+  </p>
+  <% if request.env['PATH_INFO'] == new_campaign_path %>
+    <p>
+      <%= f.label :goal, "Goal: " %>
+      <%= f.number_field :goal, :step => 0.01 %>
+    </p>
+  <% end %>
+  <p>
+    <%= f.label :category, "Category: " %>
+    <%= f.select :category, Campaign.categories %>
+  </p>
+  <p>
+    <%= f.label :imageurl, "Image URL: " %>
+    <%= f.text_area :imageurl %>
+  </p>
+  <p>
+    <%= f.label :ended_at, "Date limit: " %>
+    <%= f.date_field :ended_at %>
+  </p>
+  <p>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  </p>
+  <p>
+    <%= f.submit "Save" %>
+    <% if request.env['PATH_INFO'] == edit_campaign_path &&  %>
+      
+    <% end %>
+    <%= link_to "Cancel", root_path %>
+  </p>
+<% end %>
