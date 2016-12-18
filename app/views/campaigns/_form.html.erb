@@ -36,8 +36,8 @@
   </p>
   <p>
     <%= f.submit "Save" %>
-    <% if request.env['PATH_INFO'] == edit_campaign_path &&  %>
-      
+    <% if request.env['PATH_INFO'] == edit_campaign_path && !campaign.donations.any? %>
+      <%= link_to "Delete", campaign, method: :delete, data: {confirm: "Are you sure you want to delete this Campain?"} %>
     <% end %>
     <%= link_to "Cancel", root_path %>
   </p>

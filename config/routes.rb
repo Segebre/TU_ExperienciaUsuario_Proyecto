@@ -3,9 +3,6 @@ Rails.application.routes.draw do
 
   resources :donations
 
-  resources :comments
-  
-
   root 'welcome#index'
 
   # Users
@@ -19,6 +16,9 @@ Rails.application.routes.draw do
 
   # Campaigns
   resources :campaigns
+
+  # Comments
+  resources :comments
   
   # Sessions
   get '/login', to: 'sessions#new'

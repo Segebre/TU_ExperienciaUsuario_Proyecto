@@ -1,5 +1,7 @@
 class Campaign < ApplicationRecord
   belongs_to :user
+  has_many :coments
+  has_many :donations
 
   validates :title, :review, presence: true
   validates :review, length: { maximum: 140 }

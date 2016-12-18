@@ -37,6 +37,11 @@ class CampaignsController < ApplicationController
     end
   end
 
+  def destroy
+    Campaign.find(params[:id]).destroy
+    redirect_to root_path, notice: "Successfully Destroyed!"
+  end
+
   protected
 
     def campaign_params
