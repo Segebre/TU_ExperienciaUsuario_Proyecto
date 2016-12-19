@@ -1,0 +1,10 @@
+<tr>
+  <td><%= comment.author %></td>
+  <td><%= comment.message %></td>
+  <td><%= nice_date(comment.created_at) %></td>
+  <td>
+    <% if current_user && current_user == comment.campaign.user %>
+      <%= link_to "Delete", [comment.campaign, comment], method: :delete, data: {confirm: "Are you sure you want to delete this Comment?"} %>
+    <% end %>
+  </td>
+</tr>

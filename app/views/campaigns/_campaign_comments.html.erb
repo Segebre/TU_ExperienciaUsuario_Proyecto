@@ -1,0 +1,16 @@
+<% if comments.any? %>
+  <p>
+    <h2>Comments: </h2>
+    <table>
+      <thead>
+        <th>Author</th>
+        <th>Message</th>
+        <th>Commented on</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <%= render comments.order(:created_at).reverse %>
+      </tbody>
+    </table>
+  </p>
+<% end %>

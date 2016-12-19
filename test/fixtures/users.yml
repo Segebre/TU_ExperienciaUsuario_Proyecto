@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyText
+  name: MyText
+  password: MyText
+  city: MyText
+  country: MyText
+  isreceivingmail: false
+
+two:
+  email: MyText
+  name: MyText
+  password: MyText
+  city: MyText
+  country: MyText
+  isreceivingmail: false

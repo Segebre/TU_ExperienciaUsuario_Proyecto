@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FundNHelp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class= "navbar-custom">
+      <div class ="container-fluid">
+        <div class="navbar-header">
+          <%= link_to root_path do %>
+            <p class="intro-text">Fund N' Help</p>
+          <% end %>
+        </div>
+    <ul class="navbar-nav">
+      <li>
+        <%= link_to campaigns_path do %>
+          Campaigns
+        <% end %>
+      </li>
+        <% unless current_user %>
+          <li>
+            <%= link_to new_user_path do %>
+              Sign Up
+            <% end %>
+          </li>
+          <li>
+            <%= link_to login_path do %>
+              Login
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to new_campaign_path do %>
+              Start a Campaign
+            <% end %>
+          </li>
+          <li>
+            <%= link_to user_path do %>
+              Profile
+            <% end %>
+          </li>
+          <li>
+            <%= link_to logout_path do %>
+              Log Out
+            <% end %>
+          </li>
+          <% if current_user %>Signed in as <%= current_user.name %><% end %>
+        <% end %>
+    </ul>
+  </div>
+
+</nav>
+
+    <%= yield %>
+  </body>
+</html>

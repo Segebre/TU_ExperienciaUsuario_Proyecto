@@ -1,0 +1,29 @@
+<h1><%= @user.name %></h1>
+
+<% if flash[:notice] %>
+  <p style="background: yellow">
+    <%= flash[:notice] %>
+  </p>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Email</th>
+      <th>Receiving mail</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @user.id %></td>
+      <td><%= @user.name %></td>
+      <td><%= @user.city %>, <%= @user.country %></td>
+      <td><%= @user.email %></td>
+      <td><% if @user.isreceivingmail %> Yes <% else %> No <% end %></td>
+    </tr>
+    <tr><%= link_to "Edit", edit_user_path %></tr>
+  </tbody>
+</table>
