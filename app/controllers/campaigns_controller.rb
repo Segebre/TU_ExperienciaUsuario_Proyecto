@@ -1,5 +1,5 @@
 class CampaignsController < ApplicationController
-  skip_before_action :authenticate, only: [:show, :index, :category_campaigns]
+  skip_before_action :authorize, only: [:show, :index, :category_campaigns]
 
   def new
     @campaign = Campaign.new
@@ -17,7 +17,7 @@ class CampaignsController < ApplicationController
   end
 
   def index
-    @campaigns = Campaign.where("ended_at >= ?", Time.now).order(:created_at).reverse
+    @campaigns = Campaign.not_ended.order(:created_at).reverse
   end
 
   def show
@@ -40,12 +40,12 @@ class CampaignsController < ApplicationController
   end
 
   def category_campaigns
-    @campaigns = Campaign.where("ended_at >= ?", Time.now).where(category: params[:category]).order(:created_at).reverse
+    @campaigns = Campaign.not_ended.where(category: params[:category]).order(:created_at).reverse
     @category = params[:category]
   end
 
   def dashboard_campaigns
-    @campaigns = Campaign.where("ended_at >= ?", Time.now).where(user_id: current_user.id).order(:created_at).reverse
+    @campaigns = Campaign.not_ended.where(user_id: current_user.id).order(:created_at).reverse
   end
 
   def destroy

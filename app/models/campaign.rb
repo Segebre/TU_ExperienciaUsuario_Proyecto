@@ -8,6 +8,8 @@ class Campaign < ApplicationRecord
   validates :goal, numericality: { greater_than: 0 }
   #validates :ended_at, numericality: { greater_than_or_equal_to: Time.now, less_than_or_equal_to: Time.now + 6.months }
 
+  scope :not_ended, ->{where("ended_at >= ?", Time.now)}
+
   before_save :default_ended_at
 
   def self.categories
