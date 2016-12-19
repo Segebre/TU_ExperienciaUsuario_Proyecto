@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
+      UserMailer.welcome_email(@user).deliver_now
       redirect_to user_path(@user), notice: "Sign Up Successfull."
     else
       flash[:error] = "Sign Up Unsuccessfull"
