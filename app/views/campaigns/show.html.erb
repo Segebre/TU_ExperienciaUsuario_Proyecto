@@ -23,14 +23,20 @@
   </thead>
   <tbody>
     <tr>
-      <td><%= link_to (image_tag @campaign.imageurl, :size => "80x100"), @campaign.imageurl %></td>
+      <td>
+        <% if @campaign.imageurl == nil %>
+          <%= link_to (image_tag @campaign.imageurl, :size => "80x100"), @campaign.imageurl %>
+        <% else %>
+          <%= image_tag "donation_default.png", :size => "180x100" %>
+        <% end %>
+      </td>
       <td><%= @campaign.likes %></td>
       <td><%= @campaign.description %></td>
       <td><%= @campaign.category %></td>
       <td><%= nice_date(@campaign.created_at) %></td>
       <td><%= @campaign.user.name %></td>
       <td><%= @campaign.user.city %>, <%= @campaign.user.country %></td>
-      <td></td>
+      <td><%= total_donations(@campaign) %></td>
       <td><%= @campaign.goal %></td>
       <td><%= nice_date(@campaign.ended_at) %></td>
     </tr>
@@ -40,7 +46,19 @@
           <%= link_to "Edit", edit_campaign_path %>
         </div>
       <%end%>
-
     </tr>
   </tbody>
 </table>
+
+<p>
+<%= render partial: "campaign_comments", locals: {comments: @campaign.comments} %>
+<td><strong><%= link_to "New Comment", new_campaign_comment_path(@campaign) %></strong></td>
+</p>
+
+<p>
+<%= render partial: "campaign_donations", locals: {donations: @campaign.donations} %>
+<td><strong><%= link_to "New Donation", new_campaign_donation_path(@campaign) %></strong></td>
+</p>
+
+
+<!--  && Net::HTTP.get_response(URI.parse(@campaign.imageurl)).code.to_f >= 200 && Net::HTTP.get_response(URI.parse(@campaign.imageurl)).code.to_f < 400 -->

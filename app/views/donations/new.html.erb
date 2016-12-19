@@ -1,2 +1,4 @@
-<h1>Donations#new</h1>
-<p>Find me in app/views/donations/new.html.erb</p>
+<h1>New donation for <%= @donation.campaign.title %></h1>
+<h2>Please fill the form below: </h2>
+<%= render partial: "shared/errors", locals: {obj: @donation} %>
+<%= render partial: "shared/comment_donation_form", locals: {campaign: @campaign, obj: @donation} %>

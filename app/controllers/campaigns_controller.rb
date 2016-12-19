@@ -7,7 +7,7 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.new(campaign_params)
 
     if @campaign.save
-      redirect_to root_path, notice: "Created Successfully."
+      redirect_to campaign_path(@campaign), notice: "Created Successfully."
     else
       flash[:error] = "Could not create campaign."
       render :new
@@ -35,6 +35,10 @@ class CampaignsController < ApplicationController
       flash[:errors] = "Could not update campaign"
       render :new
     end
+  end
+
+  def category_campaigns
+    @campaigns = Campaign.where("ended_at >= ?", Time.now).where(category: params[:category]).order(:created_at).reverse
   end
 
   def destroy

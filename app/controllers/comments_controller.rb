@@ -16,6 +16,13 @@ class CommentsController < ApplicationController
       end
   end
 
+  def destroy
+    @campaign = Campaign.find(params[:campaign_id])
+    @comment = @campaign.comments.find(params[:id])
+    @comment.destroy
+    redirect_to @campaign
+  end
+
   protected
     def comment_params
       params.require(:comment).permit(:author, :message, :campaign_id)

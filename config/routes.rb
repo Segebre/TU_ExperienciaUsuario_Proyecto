@@ -17,10 +17,12 @@ Rails.application.routes.draw do
       resources :comments
     # Donations
       resources :donations
+    # Category Campaigns
+    get 'category/:category', on: :collection, action: "category_campaigns", as: :category_campaigns
+    # Dashboard
+    get 'dashboard', on: :collection
   end
 
-  
-  
   # Sessions
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

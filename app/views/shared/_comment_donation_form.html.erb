@@ -1,0 +1,27 @@
+<%= form_for [@campaign, obj] do |f| %>
+  <p>
+    <% unless current_user %>
+      <%= f.label :author, "Author:" %>
+      <%= f.text_field :author %>
+    <% else %>
+      <%= f.hidden_field :author, :value => current_user.name %>
+    <% end %>
+  </p>
+  <p>
+    <%= f.label :message, "Message: " %>
+    <%= f.text_area :message %>
+  </p>
+  <% if obj.is_a?(Donation) %>
+    <p>
+      <%= f.label :amount, "Amount: " %>
+      <%= f.number_field :amount, :step => 0.01 %>
+    </p>
+  <% end %>
+  <p>
+    <%= f.hidden_field :campaign_id, :value => params[:campaign_id] %>
+  </p>
+  <p>
+    <%= f.submit "Save" %>
+    <%= link_to "Cancel", campaign_path(obj.campaign) %>
+  </p>
+<% end %>

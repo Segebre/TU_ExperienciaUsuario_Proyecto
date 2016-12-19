@@ -25,7 +25,7 @@
   </p>
   <p>
     <%= f.label :imageurl, "Image URL: " %>
-    <%= f.text_area :imageurl %>
+    <%= f.text_field :imageurl %>
   </p>
   <p>
     <%= f.label :ended_at, "Date limit: " %>
@@ -39,6 +39,6 @@
     <% if request.env['PATH_INFO'] != new_campaign_path && !campaign.donations.any? %>
       <%= link_to "Delete", campaign, method: :delete, data: {confirm: "Are you sure you want to delete this Campain?"} %>
     <% end %>
-    <%= link_to "Cancel", root_path %>
+    <%= link_to "Cancel", campaigns_path %>
   </p>
 <% end %>
