@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   #before_action :authorize (para todos: skip_before_action :authenticate)
   #before_filter :authorize (individual)
+  before_action :authenticate
 
   def current_user
     if session[:user_id]

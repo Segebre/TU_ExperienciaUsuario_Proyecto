@@ -14,13 +14,13 @@ Rails.application.routes.draw do
   # Campaigns
   resources :campaigns do
     # Comments
-      resources :comments
+      resources :comments, only: [:new], on: :member
     # Donations
-      resources :donations
+      resources :donations, only: [:new], on: :member
     # Category Campaigns
-    get 'category/:category', on: :collection, action: "category_campaigns", as: :category_campaigns
+    get 'category/:category', on: :collection, action: "category_campaigns", as: :category
     # Dashboard
-    get 'dashboard', on: :collection, action: "dashboard_campaigns", as: :dashboard_campaigns
+    get 'dashboard', on: :collection, action: "dashboard_campaigns", as: :dashboard
   end
 
   # Sessions

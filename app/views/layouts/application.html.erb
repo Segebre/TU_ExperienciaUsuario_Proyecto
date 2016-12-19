@@ -19,6 +19,7 @@
           <td><%= link_to "Login", login_path %></td>
         <% else %>
           <td><%= link_to "Start a Campaign", new_campaign_path %></td>
+          <td><%= link_to "My Dashboard", dashboard_campaigns_path %></td>
           <td><%= link_to "Profile", user_path %></td>
           <td><%= link_to "Log Out", logout_path %></td>
           <% if current_user %>Signed in as <%= current_user.name %><% end %>

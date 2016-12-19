@@ -1,4 +1,6 @@
 class CampaignsController < ApplicationController
+  skip_before_action :authenticate, only: [:show, :index, :category_campaigns]
+
   def new
     @campaign = Campaign.new
   end
@@ -29,7 +31,7 @@ class CampaignsController < ApplicationController
   def update
     @campaign = Campaign.find(params[:id])
 
-    if campaign_params[:ended_at] < @campaign.ended_at && @campaign.update_attributes(campaign_params)
+    if campaign_params[:ended_at] <= @campaign.ended_at && @campaign.update_attributes(campaign_params)
       redirect_to @campaign, notice: "Updated Successfully!"
     else
       flash[:errors] = "Could not update campaign"
