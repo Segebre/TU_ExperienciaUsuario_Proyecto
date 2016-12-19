@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  resources :sessions
-
-  resources :donations
 
   root 'welcome#index'
 
@@ -15,10 +12,14 @@ Rails.application.routes.draw do
   resources :users, :except => [:index, :destroy]
 
   # Campaigns
-  resources :campaigns
+  resources :campaigns do
+    # Comments
+      resources :comments
+    # Donations
+      resources :donations
+  end
 
-  # Comments
-  resources :comments
+  
   
   # Sessions
   get '/login', to: 'sessions#new'

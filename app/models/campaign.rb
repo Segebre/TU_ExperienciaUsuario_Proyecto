@@ -1,6 +1,6 @@
 class Campaign < ApplicationRecord
   belongs_to :user
-  has_many :coments
+  has_many :comments
   has_many :donations
 
   validates :title, :review, presence: true
