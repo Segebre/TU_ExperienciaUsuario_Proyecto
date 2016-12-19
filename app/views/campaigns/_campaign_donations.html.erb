@@ -4,10 +4,9 @@
     <table>
       <thead>
         <th>Author</th>
-        <th>Message</th>
         <th>Amount</th>
+        <th>Message</th>
         <th>Commented on</th>
-        <th></th>
       </thead>
       <tbody>
         <%= render donations.order(:created_at).reverse %>

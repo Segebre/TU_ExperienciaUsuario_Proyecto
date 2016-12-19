@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     # Category Campaigns
     get 'category/:category', on: :collection, action: "category_campaigns", as: :category_campaigns
     # Dashboard
-    get 'dashboard', on: :collection
+    get 'dashboard', on: :collection, action: "dashboard_campaigns", as: :dashboard_campaigns
   end
 
   # Sessions

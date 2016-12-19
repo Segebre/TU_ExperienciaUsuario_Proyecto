@@ -1,11 +1,6 @@
 <tr>
   <td><%= donation.author %></td>
-  <td><%= donation.message %></td>
   <td><%= donation.amount %></td>
+  <td><%= donation.message %></td>
   <td><%= nice_date(donation.created_at) %></td>
-  <td>
-    <% if current_user && current_user == donation.campaign.user %>
-      <%= link_to "Delete", [donation.campaign, donation], method: :delete, data: {confirm: "Are you sure you want to delete this Donation?"} %>
-    <% end %>
-  </td>
 </tr>

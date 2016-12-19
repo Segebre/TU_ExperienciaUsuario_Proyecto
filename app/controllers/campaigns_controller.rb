@@ -29,16 +29,21 @@ class CampaignsController < ApplicationController
   def update
     @campaign = Campaign.find(params[:id])
 
-    if @campaign.update_attributes(campaign_params)
+    if campaign_params[:ended_at] < @campaign.ended_at && @campaign.update_attributes(campaign_params)
       redirect_to @campaign, notice: "Updated Successfully!"
     else
       flash[:errors] = "Could not update campaign"
-      render :new
+      render :edit
     end
   end
 
   def category_campaigns
     @campaigns = Campaign.where("ended_at >= ?", Time.now).where(category: params[:category]).order(:created_at).reverse
+    @category = params[:category]
+  end
+
+  def dashboard_campaigns
+    @campaigns = Campaign.where("ended_at >= ?", Time.now).where(user_id: current_user.id).order(:created_at).reverse
   end
 
   def destroy
