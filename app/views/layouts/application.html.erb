@@ -16,38 +16,50 @@
             <p class="intro-text">Fund N' Help</p>
           <% end %>
         </div>
-    <ul class="navbar-nav">
+    <ul class="navbar-nav ">
       <li>
-        <%= link_to campaigns_path do %>
-          Campaigns
-        <% end %>
+        <h3 style="padding-right:10px">
+          <%= link_to campaigns_path do %>
+            Campaigns
+          <% end %>
+        </h3>
       </li>
         <% unless current_user %>
           <li>
+            <h3 style="padding-right:10px">
             <%= link_to new_user_path do %>
               Sign Up
             <% end %>
+            </h3>
           </li>
           <li>
+            <h3 style="padding-right:10px">
             <%= link_to login_path do %>
               Login
             <% end %>
+            </h3>
           </li>
         <% else %>
           <li>
+            <h3 style="padding-right:10px">
             <%= link_to new_campaign_path do %>
               Start a Campaign
             <% end %>
+            </h3>
           </li>
           <li>
+            <h3 style="padding-right:10px">
             <%= link_to user_path do %>
               Profile
             <% end %>
+            </h3>
           </li>
           <li>
+            <h3 style="padding-right:10px">
             <%= link_to logout_path do %>
               Log Out
             <% end %>
+            </h3>
           </li>
           <% if current_user %>Signed in as <%= current_user.name %><% end %>
         <% end %>
@@ -56,5 +68,9 @@
 
 </nav>
     <%= yield %>
+    <p class="footer footer-below">
+        Hecho por Juan Segbre, Jose Ramon
+        <p>Experiencia de Usuario 2016</p>
+    </p>
   </body>
 </html>
