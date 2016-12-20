@@ -21,6 +21,9 @@ a.active {
   color: #18BC9C;
   outline: none;
 }
+table{
+  border: 1px solid black;
+}
 h1,
 h2,
 h3,
