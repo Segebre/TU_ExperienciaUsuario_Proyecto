@@ -9,6 +9,7 @@
   </head>
 
   <body>
+<<<<<<< HEAD
     <nav class= "navbar-custom">
       <div class ="container-fluid">
         <div class="navbar-header">
@@ -55,6 +56,25 @@
   </div>
 
 </nav>
+=======
+
+    <table>
+      <tbody>
+        <td><%= link_to "Home", root_path %></td>
+        <td><%= link_to "Campaigns", campaigns_path %></td>
+        <% unless current_user %>
+          <td><%= link_to "Sign Up", new_user_path %></td>
+          <td><%= link_to "Login", login_path %></td>
+        <% else %>
+          <td><%= link_to "Start a Campaign", new_campaign_path %></td>
+          <td><%= link_to "My Dashboard", dashboard_campaigns_path %></td>
+          <td><%= link_to "Profile", user_path %></td>
+          <td><%= link_to "Log Out", logout_path %></td>
+          <% if current_user %>Signed in as <%= current_user.name %><% end %>
+        <% end %>
+      </tbody>
+    </table>
+>>>>>>> fedf8d17ec369d643db6278ca73c1ff5e75ad709
 
     <%= yield %>
   </body>
