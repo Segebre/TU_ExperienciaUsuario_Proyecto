@@ -14,9 +14,9 @@ Rails.application.routes.draw do
   # Campaigns
   resources :campaigns do
     # Comments
-      resources :comments, only: [:new], on: :member
+      resources :comments, only: [:new, :create], on: :member
     # Donations
-      resources :donations, only: [:new], on: :member
+      resources :donations, only: [:new, :create], on: :member
     # Category Campaigns
     get 'category/:category', on: :collection, action: "category_campaigns", as: :category
     # Dashboard

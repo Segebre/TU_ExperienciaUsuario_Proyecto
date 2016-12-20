@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
     @comment = @campaign.comments.build(comment_params)
 
       if @comment.save
+        UserMailer.comment_email(@campaign.user, @campaign, @comment).deliver_now
         redirect_to @campaign, notice: "Comment recorded"
       else
         flash[:error] = "Could not post comment"
